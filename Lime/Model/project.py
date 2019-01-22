@@ -5,7 +5,7 @@ class Project(db.Model):
     projectname = db.Column(db.String(50))
     partyAName = db.Column(db.String(50))
     partyBName = db.Column(db.String(50))
-    price = db.Column(db.Float)
+    price = db.Column(db.REAL)
     region = db.Column(db.String(50))
     person = db.Column(db.String(50))
     phone = db.Column(db.String(50))

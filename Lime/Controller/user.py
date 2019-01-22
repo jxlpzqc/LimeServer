@@ -18,9 +18,18 @@ def login():
     else:
         return json.dumps({'code': '-1', 'msg': '用户名或密码错误'})
 
-@app.route('/user/checkStatus',methods=['POST'])
+
+@app.route('/user/checkStatus', methods=['POST'])
 def checkStatus():
-    if('username' in session.keys() and session['username'] is not None and session['username'] != ''):
-        return json.dumps({'code': '0', 'msg': '已登录', 'data': {'username': session['username'], 'permission': session['permission']}})
+    if ('username' in session.keys() and session['username'] is not None and session['username'] != ''):
+        return json.dumps(
+            {'code': '0', 'msg': '已登录', 'data': {'username': session['username'], 'permission': session['permission']}})
     else:
         return json.dumps({'code': '-1', 'msg': '未登录'})
+
+
+@app.route("/user/logout", methods=['POST'])
+def logout():
+    session.clear()
+    ret = {'code': 0, 'msg': '成功退出登录'}
+    return json.dumps(ret)
